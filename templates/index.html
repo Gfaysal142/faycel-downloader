@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faycel Downloader Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        :root { --primary: #00ff88; --bg: #0f0f0f; --card: #1a1a1a; }
+        body { background: var(--bg); color: white; font-family: 'Cairo', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .card { background: var(--card); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; border: 1px solid #333; width: 90%; max-width: 450px; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); }
+        h1 { font-size: 24px; margin-bottom: 20px; }
+        h1 span { color: var(--primary); }
+        input { width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #333; background: #111; color: white; box-sizing: border-box; margin-bottom: 20px; outline: none; }
+        input:focus { border-color: var(--primary); }
+        button { background: var(--primary); color: black; border: none; padding: 15px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; }
+        button:hover { transform: scale(1.05); background: #00cc6e; }
+        .loading { display: none; margin-top: 20px; }
+        .fa-spin { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1><span><i class="fas fa-bolt"></i></span> محمل فيصل برو</h1>
+        <p>تحميل سريع من جميع المنصات</p>
+        <form id="downloadForm" action="/download" method="post">
+            <input type="text" name="url" id="urlInput" placeholder="ضع الرابط هنا (TikTok, Insta...)" required>
+            <button type="submit" id="btn"> <i class="fas fa-download"></i> ابدأ التحميل</button>
+        </form>
+        <div class="loading" id="loader">
+            <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+            <p>جاري معالجة الفيديو... انتظر قليلاً</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadForm').onsubmit = function() {
+            document.getElementById('btn').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+            Swal.fire({
+                title: 'بدأنا!',
+                text: 'جاري جلب الفيديو من السيرفر...',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        };
+    </script>
+</body>
+</html>
+
