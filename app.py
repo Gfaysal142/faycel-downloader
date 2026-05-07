@@ -16,10 +16,14 @@ def download():
         return "يرجى إدخال رابط!"
 
     filename = f"video_{int(time.time())}.mp4"
-    ydl_opts = {
-        'format': 'best',
-        'outtmpl': filename,
-    }
+ydl_opts = {
+    'format': 'best',
+    'quiet': True,
+    'no_warnings': True,
+    'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+    # ... بقية الإعدادات تاعك
+}
+
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
